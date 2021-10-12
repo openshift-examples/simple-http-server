@@ -1,8 +1,11 @@
-FROM alpine:latest
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
-RUN apk --update add socat curl busybox-extras
+RUN microdnf install --nodocs -y socat iproute
+
 RUN mkdir /www/ && chmod 770 /www/
+
 ADD srv.sh /www/srv.sh
+
 EXPOSE 8080
 
 USER 1984
