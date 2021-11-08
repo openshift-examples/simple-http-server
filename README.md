@@ -1,4 +1,4 @@
-# Local build & push 
+# Local build & push  [![Docker Repository on Quay](https://quay.io/repository/openshift-examples/simple-http-server/status "Docker Repository on Quay")](https://quay.io/repository/openshift-examples/simple-http-server)
 
 ```
 sudo podman build --squash -t simple-http-server:latest .
