@@ -4,7 +4,9 @@
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index?extIdCarryOver=true&sc_cid=7013a000002peuMAAQ#proc_using-the-ubi-micro-images_assembly_types-of-container-images
 set -x
 
-microcontainer=$(buildah from registry.access.redhat.com/ubi9/ubi-micro)
+buildah pull registry.access.redhat.com/ubi9/ubi-micro:latest
+
+microcontainer=$(buildah from registry.access.redhat.com/ubi9/ubi-micro:latest)
 
 
 micromount=$(buildah mount $microcontainer)

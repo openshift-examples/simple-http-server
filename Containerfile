@@ -1,6 +1,8 @@
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
-RUN microdnf install --nodocs -y socat iproute
+RUN microdnf install --nodocs -y socat iproute \
+    && microdnf -y update \
+    && microdnf clean all
 
 RUN mkdir /www/ && chmod 770 /www/
 
