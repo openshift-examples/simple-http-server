@@ -13,7 +13,7 @@ micromount=$(buildah mount $microcontainer)
 
 yum install \
     --installroot $micromount \
-    --releasever 8 \
+    --releasever 9 \
     --setopt install_weak_deps=false \
     --nodocs -y \
     socat iproute curl
