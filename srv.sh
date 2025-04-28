@@ -5,6 +5,7 @@ url="${url% HTTP/*}"
 query="${url#*\?}"
 url="${url%%\?*}"
 
+echo $(date +"%F %T %z") $request > /dev/stderr
 
 case $query in
   /demo)

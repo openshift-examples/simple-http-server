@@ -15,4 +15,4 @@ EXPOSE 8080
 
 USER 1984
 
-CMD socat -d TCP4-LISTEN:8080,fork EXEC:/www/srv.sh
+CMD socat TCP4-LISTEN:8080,fork EXEC:/www/srv.sh
