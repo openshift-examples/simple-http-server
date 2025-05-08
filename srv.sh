@@ -56,6 +56,21 @@ case $query in
     ;;  
   /)
     echo -e "HTTP/1.1 200 OK\r"
+    echo -e "Content-Type: text/html\r"
+    echo -e "X-ENV-HOSTNAME: $HOSTNAME\r"
+    echo -e "\r"
+    echo -e ""
+    echo -e "<!DOCTYPE html>"
+    echo -e "<html>"
+    echo -e "<body>"
+    echo -e "<h3>Hi,</h3>"
+    echo -e "I'm a simple socat+bash webserver running in"
+    echo -e "pod <strong>$POD_NAME</strong> on node <strong>$NODE_NAME</strong>"
+    echo -e "</body>"
+    echo -e "</html>"
+    ;;
+  /raw)
+    echo -e "HTTP/1.1 200 OK\r"
     echo -e "Content-Type: text/plain\r"
     echo -e "X-ENV-HOSTNAME: $HOSTNAME\r"
     echo -e "\r"

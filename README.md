@@ -12,6 +12,7 @@ sudo skopeo copy --authfile=/home/cloud-user/rbo-demo-demo-auth.json containers-
 
 ```bash
 export IMAGE='quay.io/openshift-examples/simple-http-server:latest'
+podman manifest rm ${IMAGE}
 podman build --platform linux/amd64,linux/arm64  --manifest ${IMAGE}  .
 podman manifest push ${IMAGE}
 ```
