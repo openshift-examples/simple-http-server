@@ -5,7 +5,7 @@ url="${url% HTTP/*}"
 query="${url#*\?}"
 url="${url%%\?*}"
 
-echo $(date +"%F %T %z") $request > /dev/stderr
+echo $(date +"%F %T %z") $SOCAT_PEERADDR $request > /dev/stderr
 
 case $query in
   /demo)
@@ -63,7 +63,7 @@ case $query in
     echo -e "<!DOCTYPE html>"
     echo -e "<html>"
     echo -e "<body>"
-    echo -e "<h3>Hi,</h3>"
+    echo -e "<h3>Hi, $SOCAT_PEERADDR</h3>"
     echo -e "I'm a simple socat+bash webserver running in"
     echo -e "pod <strong>$POD_NAME</strong> on node <strong>$NODE_NAME</strong>"
     echo -e "</body>"

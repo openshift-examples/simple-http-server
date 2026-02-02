@@ -11,8 +11,15 @@ sudo skopeo copy --authfile=/home/cloud-user/rbo-demo-demo-auth.json containers-
 # Build ubi-minimal local with Podman Desktop (MacOS, Apple Silicon)
 
 ```bash
-export IMAGE='quay.io/openshift-examples/simple-http-server:latest'
+export VERSION=$(date +%Y%m%d%H%M)
+export IMAGE="quay.io/openshift-examples/simple-http-server:${VERSION}"
 podman manifest rm ${IMAGE}
-podman build --platform linux/amd64,linux/arm64  --manifest ${IMAGE}  .
+podman build --platform linux/amd64,linux/arm64  --manifest ${IMAGE} .
 podman manifest push ${IMAGE}
+```
+
+# Run local
+
+```bash
+podman run -ti --rm -p 8080:8080 $IMAGE 
 ```
