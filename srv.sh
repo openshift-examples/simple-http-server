@@ -36,7 +36,7 @@ case $query in
       echo -e "Content-Type: text/plain\r"
       echo -e "X-ENV-HOSTNAME: $HOSTNAME\r"
       echo -e "\r"
-    fi 
+    fi
     ;;
 
   /liveness-probe)
@@ -51,9 +51,9 @@ case $query in
       echo -e "Content-Type: text/plain\r"
       echo -e "X-ENV-HOSTNAME: $HOSTNAME\r"
       echo -e "\r"
-    fi 
+    fi
 
-    ;;  
+    ;;
   /)
     echo -e "HTTP/1.1 200 OK\r"
     echo -e "Content-Type: text/html\r"
@@ -66,6 +66,7 @@ case $query in
     echo -e "<h3>Hi, $SOCAT_PEERADDR</h3>"
     echo -e "I'm a simple socat+bash webserver running in"
     echo -e "pod <strong>$POD_NAME</strong> on node <strong>$NODE_NAME</strong>"
+    echo -e "responding at $(date +'%F %T %z')"
     echo -e "</body>"
     echo -e "</html>"
     ;;
@@ -90,13 +91,16 @@ case $query in
 
     echo -e "\n## request"
     echo $request
+
+    echo -e "\n## Date/Time"
+    echo -e "$(date +'%F %T %z')"
     ;;
   *)
     echo -e "HTTP/1.1 404 Not Found\r"
     echo -e "Content-Type: text/plain\r"
     echo -e "X-ENV-HOSTNAME: $HOSTNAME\r"
     echo -e "X-ENV-QUERY: $query\r"
-    
+
     echo -e "\r"
     ;;
 esac
